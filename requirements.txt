@@ -1,0 +1,9 @@
+torch>=2.8,<2.9
+transformers>=4.56,<4.57
+pandas
+pyrallis
+lightning
+tqdm
+openai
+jinja2
+sentencepiece

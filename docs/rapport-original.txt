@@ -1,0 +1,117 @@
+================================================================================
+                    PROJET DE CLASSIFICATION D'AVIS DE RESTAURANTS
+                         Analyse de Sentiments Multi-Aspects
+================================================================================
+
+NOM : DJIMADOUM Rassem
+
+================================================================================
+                              DESCRIPTION DU CLASSIFIEUR
+================================================================================
+
+Ce projet implémente un classifieur de sentiments multi-aspects pour des avis
+de restaurants en français. Le modèle prédit l'opinion (Positive, Négative,
+Neutre, Non Exprimée) pour trois aspects : Prix, Cuisine et Service.
+
+ARCHITECTURE
+------------
+- Modèle de base : CamemBERT (almanach/camembert-base)
+  -> Modèle de langue pré-entraîné sur du texte français (variante de RoBERTa)
+  -> 110M paramètres, hidden_size = 768
+
+- Représentation : Token [CLS] pooling
+  → La représentation du token [CLS] (premier token) est utilisée comme
+    embedding de la phrase entière
+
+- Têtes de classification : 3 classifieurs linéaires indépendants
+  -> Un classifieur par aspect (Prix, Cuisine, Service)
+  -> Architecture : Linear(768 → 4) avec Dropout(0.3)
+
+HYPERPARAMÈTRES
+---------------
+- max_length      : 256 tokens
+- batch_size      : 16
+- learning_rate   : 3e-5
+- weight_decay    : 0.01
+- epochs          : 3
+- optimizer       : AdamW
+- scheduler       : Linear warmup (0 warmup steps)
+- dropout         : 0.3
+- label_smoothing : 0.1
+
+RESSOURCES UTILISÉES
+--------------------
+- Framework : PyTorch 2.8.x
+- Transformers : HuggingFace Transformers 4.56.x
+- Hardware : CPU Intel Core i7, 16 Go RAM
+- Temps d'entraînement : ~20 minutes sur CPU
+
+================================================================================
+                              RÉSULTATS
+================================================================================
+
+EXACTITUDE MOYENNE SUR DONNÉES DE VALIDATION : 85%
+
+Détail par aspect :
+- Prix     : ~85%
+- Cuisine  : ~86%
+- Service  : ~84%
+
+================================================================================
+                         TENTATIVES NON RETENUES
+================================================================================
+
+1. DATA AUGMENTATION (paraphrases via LLM)
+------------------------------------------
+   Objectif : Créer des paraphrases synthétiques des avis d'entraînement via
+              Ollama/Qwen pour augmenter la quantité de données.
+
+   Résultat : Non retenu
+   - Temps de génération trop long (~5-10 minutes pour 10% des données)
+   - Gain d'accuracy incertain (non testé complètement)
+   - Complexité ajoutée sans garantie d'amélioration
+
+2. WEIGHTED LOSS (poids des classes)
+------------------------------------
+   Objectif : Compenser le déséquilibre des classes en attribuant des poids
+              plus élevés aux classes minoritaires (Neutre, NE).
+
+   Résultat : Non retenu - Perte d'accuracy (85% → 72-76%)
+   - Les poids calculés automatiquement pénalisaient trop les classes
+     majoritaires (Positive, Négative)
+   - Le modèle sur-compensait pour les classes rares au détriment de la
+     performance globale
+
+3. RÉDUCTION DE max_length (256 → 128)
+--------------------------------------
+   Objectif : Accélérer l'entraînement en réduisant la longueur des séquences.
+
+   Résultat : Non retenu - Perte d'accuracy (85% → 79%)
+   - 6.5% des avis dépassent 128 tokens
+   - Ces avis longs contiennent souvent des informations cruciales pour
+     la classification multi-aspects
+
+4. COUCHE CACHÉE SUPPLÉMENTAIRE
+-------------------------------
+   Objectif : Ajouter une couche cachée (768 → 256 → 4) avec ReLU pour
+              capturer des relations plus complexes.
+
+   Résultat : Non retenu - Perte d'accuracy (85% → 76%)
+   - Overfitting sur les données d'entraînement
+
+
+================================================================================
+                              CONCLUSION
+================================================================================
+
+La configuration finale retenue privilégie la simplicité et l'efficacité :
+- Architecture linéaire simple (pas de couches cachées)
+- 3 epochs d'entraînement
+- max_length=256 (préserve l'information des avis longs)
+- CrossEntropyLoss standard sans pondération
+- Label smoothing (0.1) et Dropout (0.3) pour la régularisation
+
+Cette configuration atteint 85% d'accuracy tout en maintenant un temps
+d'entraînement raisonnable sur CPU.
+
+================================================================================
