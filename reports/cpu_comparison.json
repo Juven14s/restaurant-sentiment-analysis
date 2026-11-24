@@ -1,0 +1,55 @@
+{
+  "scale": "0 to 1",
+  "reference_sha256": "025c760a493a749b15c7929dff8c51da89bed9d6ffa61fd083e09be2f525b19e",
+  "data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "results": [
+    {
+      "method": "majority",
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "experiment_signature": "d2f20414b8b97d4b5d7ec537ed8d8bb9d493b17d7bec4bf02861dfe44e55c310",
+      "macro_f1": {
+        "mean": 0.19837946015619967,
+        "sample_std": null
+      },
+      "macro_accuracy": {
+        "mean": 0.6579710144927536,
+        "sample_std": null
+      },
+      "joint_exact_match": {
+        "mean": 0.3695652173913043,
+        "sample_std": null
+      },
+      "json_valid_rate": {
+        "mean": 1.0,
+        "sample_std": null
+      }
+    },
+    {
+      "method": "tfidf",
+      "n_runs": 1,
+      "seeds": [
+        42
+      ],
+      "experiment_signature": "a51e80027d5c486f9dae6b983b85b66c77126e1434fd0322c38cd6e5f686747f",
+      "macro_f1": {
+        "mean": 0.45314073395093524,
+        "sample_std": null
+      },
+      "macro_accuracy": {
+        "mean": 0.7623188405797102,
+        "sample_std": null
+      },
+      "joint_exact_match": {
+        "mean": 0.4956521739130435,
+        "sample_std": null
+      },
+      "json_valid_rate": {
+        "mean": 1.0,
+        "sample_std": null
+      }
+    }
+  ]
+}

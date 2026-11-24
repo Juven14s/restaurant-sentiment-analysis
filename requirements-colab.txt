@@ -1,0 +1,2 @@
+# Install inside the checked-out repository; keep Colab's compatible PyTorch.
+-e .[baseline,training]

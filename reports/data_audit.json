@@ -1,0 +1,171 @@
+{
+  "actual_ratios": {
+    "test": 0.10004349717268378,
+    "train": 0.7999130056546324,
+    "validation": 0.10004349717268378
+  },
+  "counts": {
+    "concordant_duplicate_rows_removed": 3,
+    "conflicting_rows_removed": 8,
+    "conflicting_texts": 4,
+    "duplicate_rows": 7,
+    "input_rows": 4609,
+    "retained_rows": 4598,
+    "texts_with_multiple_restaurants": 0,
+    "unique_normalized_texts": 4602
+  },
+  "files": {
+    "test": {
+      "count": 460,
+      "path": "test.jsonl",
+      "sha256": "025c760a493a749b15c7929dff8c51da89bed9d6ffa61fd083e09be2f525b19e"
+    },
+    "train": {
+      "count": 3678,
+      "path": "train.jsonl",
+      "sha256": "c5183b88eed136b2bdd406d123b5acc152dc58e61c14455d21428d1345f8327c"
+    },
+    "validation": {
+      "count": 460,
+      "path": "validation.jsonl",
+      "sha256": "9bae916a868f774f8b312255ea5ab957d7ed98a4a18a9ee8040ea9eac3e1808b"
+    }
+  },
+  "fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "group_counts": {
+    "test": 460,
+    "train": 3678,
+    "validation": 460
+  },
+  "label_statistics": {
+    "all": {
+      "Cuisine": {
+        "NE": 442,
+        "Neutre": 361,
+        "Négative": 610,
+        "Positive": 3185
+      },
+      "Prix": {
+        "NE": 2946,
+        "Neutre": 168,
+        "Négative": 641,
+        "Positive": 843
+      },
+      "Service": {
+        "NE": 926,
+        "Neutre": 215,
+        "Négative": 757,
+        "Positive": 2700
+      }
+    },
+    "test": {
+      "Cuisine": {
+        "NE": 39,
+        "Neutre": 41,
+        "Négative": 64,
+        "Positive": 316
+      },
+      "Prix": {
+        "NE": 294,
+        "Neutre": 18,
+        "Négative": 66,
+        "Positive": 82
+      },
+      "Service": {
+        "NE": 71,
+        "Neutre": 19,
+        "Négative": 72,
+        "Positive": 298
+      }
+    },
+    "train": {
+      "Cuisine": {
+        "NE": 370,
+        "Neutre": 281,
+        "Négative": 492,
+        "Positive": 2535
+      },
+      "Prix": {
+        "NE": 2351,
+        "Neutre": 131,
+        "Négative": 517,
+        "Positive": 679
+      },
+      "Service": {
+        "NE": 770,
+        "Neutre": 174,
+        "Négative": 610,
+        "Positive": 2124
+      }
+    },
+    "validation": {
+      "Cuisine": {
+        "NE": 33,
+        "Neutre": 39,
+        "Négative": 54,
+        "Positive": 334
+      },
+      "Prix": {
+        "NE": 301,
+        "Neutre": 19,
+        "Négative": 58,
+        "Positive": 82
+      },
+      "Service": {
+        "NE": 85,
+        "Neutre": 22,
+        "Négative": 75,
+        "Positive": 278
+      }
+    }
+  },
+  "limitations": [
+    "Pooled sources are repartitioned; prior reported validation scores are not comparable.",
+    "Splits are not label-stratified; inspect per-class support before interpreting metrics.",
+    "Text grouping allows restaurant overlap; use restaurant grouping for unseen restaurants."
+  ],
+  "options": {
+    "assignment": "sha256_rank_v1",
+    "deduplication": "discard_all_conflicting_labels; deterministic_representative",
+    "normalization": "NFKC + casefold + whitespace",
+    "requested_ratios": {
+      "test": 0.1,
+      "train": 0.8,
+      "validation": 0.1
+    },
+    "seed": 42,
+    "split_by": "text"
+  },
+  "overlap_checks": {
+    "train/test": {
+      "restaurant_overlap": 24,
+      "text_id_overlap": 0
+    },
+    "train/validation": {
+      "restaurant_overlap": 24,
+      "text_id_overlap": 0
+    },
+    "validation/test": {
+      "restaurant_overlap": 24,
+      "text_id_overlap": 0
+    }
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "path": "ftdataset_val.tsv",
+      "rows": 600,
+      "sha256": "13df2c271737fec4332c2572135f92c47d279c4e2262dc2cd35a5027f0ee78bc"
+    },
+    {
+      "path": "ftdataset_train.tsv",
+      "rows": 4009,
+      "sha256": "8f11bed04e34c49bc1f17ba141c2592a6019c5c5c2790d52a4eaf6465eebdd56"
+    }
+  ],
+  "split_counts": {
+    "test": 460,
+    "train": 3678,
+    "validation": 460
+  }
+}

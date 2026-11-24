@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "restaurant-sentiment-research"
+version = "0.2.0"
+description = "Reproducible French aspect sentiment benchmarks and small-LLM adaptation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+baseline = ["scikit-learn==1.7.2"]
+training = [
+    "torch>=2.8,<3",
+    "transformers==4.56.2",
+    "datasets==4.1.1",
+    "accelerate==1.10.1",
+    "peft==0.17.1",
+    "trl==0.23.1",
+    "sentencepiece==0.2.1",
+]
+quantization = ["bitsandbytes==0.48.1"]
+
+[project.scripts]
+sentiment = "restaurant_sentiment.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

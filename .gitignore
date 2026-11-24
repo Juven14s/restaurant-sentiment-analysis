@@ -18,3 +18,8 @@ venv/
 .cache/
 data/*
 !data/README.md
+outputs/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
