@@ -1,0 +1,213 @@
+{
+  "n_samples": 80,
+  "labels": [
+    "Positive",
+    "Négative",
+    "Neutre",
+    "NE"
+  ],
+  "confusion_matrix_axes": {
+    "rows": "reference",
+    "columns": "prediction"
+  },
+  "per_aspect": {
+    "Prix": {
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "Positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 9
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 54
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 80
+    },
+    "Cuisine": {
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "Positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 15
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 48
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 80
+    },
+    "Service": {
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "Positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 13
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 50
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 80
+    }
+  },
+  "macro_accuracy": 0.0,
+  "macro_f1": 0.0,
+  "joint_exact_match": 0.0,
+  "json_valid_rate": 0.0,
+  "reference_sha256": "0840a0973bef7c42ff8fef4fefdc97973a3ebd6fba3047c476901ffcf9bf51d1",
+  "data_fingerprint": "cb1e595f77913b05b3bddbedc8bdc958f28c940bab512b4eb2702973b55fc23e",
+  "method": "llm",
+  "seed": null,
+  "experiment_signature": "7535ca484ff7c0bb74dd016810687522b0a7ea9325f958330e9bb0349c53b5b6",
+  "inference_seconds": 417.3140979489999,
+  "runtime": {
+    "cuda": null,
+    "python": "3.12.3",
+    "git_commit": "e8b729e7c6787d269d124f245b66f0dbbd6ad0fc",
+    "packages": {
+      "torch": "2.8.0+cpu",
+      "transformers": "4.56.2",
+      "datasets": "4.1.1",
+      "accelerate": "1.10.1",
+      "trl": "0.23.1",
+      "peft": "0.17.1"
+    },
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "git_dirty": true,
+    "device": "cpu",
+    "gpu": null
+  }
+}

@@ -40,6 +40,10 @@ def parser():
     baseline.add_argument("--output-dir", type=Path, required=True)
     baseline.add_argument("--method", choices=["majority", "tfidf"], default="majority")
     baseline.add_argument("--seed", type=int, default=42)
+    baseline.add_argument("--split", choices=["validation", "test"], default="test",
+                          help="Evaluation split; validation is intended for error analysis")
+    baseline.add_argument("--evaluation-path", type=Path,
+                          help="External frozen JSONL benchmark; overrides --split")
     _training_parser(commands)
 
     pred = commands.add_parser("predict", help="Generate predictions with a saved or Hub model")
@@ -62,6 +66,17 @@ def parser():
     summary = commands.add_parser("summarize", help="Aggregate compatible metric files")
     summary.add_argument("--metrics", type=Path, nargs="+", required=True)
     summary.add_argument("--output-path", type=Path, required=True)
+
+    diagnose = commands.add_parser("diagnose", help="Validation diagnostics and an error-review worksheet")
+    diagnose.add_argument("--references", type=Path, required=True)
+    diagnose.add_argument("--predictions", type=Path, required=True)
+    diagnose.add_argument("--output-dir", type=Path, required=True)
+    diagnose.add_argument("--sample-size", type=int, default=50)
+    diagnose.add_argument("--seed", type=int, default=42)
+    ablation = commands.add_parser("format-ablation", help="Explicit strict versus single-fence scoring of the same generations")
+    ablation.add_argument("--references", type=Path, required=True)
+    ablation.add_argument("--predictions", type=Path, required=True)
+    ablation.add_argument("--output-dir", type=Path, required=True)
     return p
 
 
@@ -73,7 +88,8 @@ def run(args):
     if args.command == "baseline":
         from .baselines import run_baseline
 
-        return run_baseline(args.data_dir, args.output_dir, args.method, args.seed)
+        return run_baseline(args.data_dir, args.output_dir, args.method, args.seed,
+                            evaluation_split=args.split, evaluation_path=args.evaluation_path)
     if args.command == "train":
         from .training import train_camembert, train_sft
 
@@ -101,6 +117,14 @@ def run(args):
         from .reporting import summarize
 
         return summarize(args.metrics, args.output_path)
+    if args.command == "diagnose":
+        from .analysis import diagnose
+
+        return diagnose(args.references, args.predictions, args.output_dir, args.sample_size, args.seed)
+    if args.command == "format-ablation":
+        from .analysis import format_ablation
+
+        return format_ablation(args.references,args.predictions,args.output_dir)
     raise ValueError("Unknown command")
 
 

@@ -1,0 +1,223 @@
+{
+  "n_samples": 460,
+  "labels": [
+    "Positive",
+    "Négative",
+    "Neutre",
+    "NE"
+  ],
+  "confusion_matrix_axes": {
+    "rows": "reference",
+    "columns": "prediction"
+  },
+  "per_aspect": {
+    "Prix": {
+      "accuracy": 0.6543478260869565,
+      "macro_f1": 0.19776609724047306,
+      "per_class": {
+        "Positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 82
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 58
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 19
+        },
+        "NE": {
+          "precision": 0.6543478260869565,
+          "recall": 1.0,
+          "f1": 0.7910643889618922,
+          "support": 301
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          82
+        ],
+        [
+          0,
+          0,
+          0,
+          58
+        ],
+        [
+          0,
+          0,
+          0,
+          19
+        ],
+        [
+          0,
+          0,
+          0,
+          301
+        ]
+      ],
+      "invalid_count": 0
+    },
+    "Cuisine": {
+      "accuracy": 0.7260869565217392,
+      "macro_f1": 0.21032745591939547,
+      "per_class": {
+        "Positive": {
+          "precision": 0.7260869565217392,
+          "recall": 1.0,
+          "f1": 0.8413098236775819,
+          "support": 334
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 54
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 39
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 33
+        }
+      },
+      "confusion_matrix": [
+        [
+          334,
+          0,
+          0,
+          0
+        ],
+        [
+          54,
+          0,
+          0,
+          0
+        ],
+        [
+          39,
+          0,
+          0,
+          0
+        ],
+        [
+          33,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 0
+    },
+    "Service": {
+      "accuracy": 0.6043478260869565,
+      "macro_f1": 0.18834688346883469,
+      "per_class": {
+        "Positive": {
+          "precision": 0.6043478260869565,
+          "recall": 1.0,
+          "f1": 0.7533875338753387,
+          "support": 278
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 75
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 22
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 85
+        }
+      },
+      "confusion_matrix": [
+        [
+          278,
+          0,
+          0,
+          0
+        ],
+        [
+          75,
+          0,
+          0,
+          0
+        ],
+        [
+          22,
+          0,
+          0,
+          0
+        ],
+        [
+          85,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 0
+    }
+  },
+  "macro_accuracy": 0.6615942028985508,
+  "macro_f1": 0.19881347887623443,
+  "joint_exact_match": 0.3695652173913043,
+  "json_valid_rate": 1.0,
+  "method": "majority",
+  "seed": 42,
+  "training_samples": 3678,
+  "fit_seconds": 0.0011571720006031683,
+  "infer_seconds": 0.00012361300014163135,
+  "model_config": {
+    "majority_labels": {
+      "Prix": "NE",
+      "Cuisine": "Positive",
+      "Service": "Positive"
+    },
+    "tie_break_order": [
+      "Positive",
+      "Négative",
+      "Neutre",
+      "NE"
+    ]
+  },
+  "data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "training_data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "evaluation_split": "validation",
+  "data_files_sha256": {
+    "train": "c5183b88eed136b2bdd406d123b5acc152dc58e61c14455d21428d1345f8327c",
+    "validation": "9bae916a868f774f8b312255ea5ab957d7ed98a4a18a9ee8040ea9eac3e1808b"
+  },
+  "reference_sha256": "9bae916a868f774f8b312255ea5ab957d7ed98a4a18a9ee8040ea9eac3e1808b",
+  "runtime": {
+    "python": "3.12.3",
+    "device": "cpu",
+    "packages": {}
+  },
+  "experiment_signature": "d2f20414b8b97d4b5d7ec537ed8d8bb9d493b17d7bec4bf02861dfe44e55c310",
+  "implementation_sha256": "657d37190f4dd0270d8fe7394847644b3bb9ebf3a8d732188b765af65ebb859b"
+}

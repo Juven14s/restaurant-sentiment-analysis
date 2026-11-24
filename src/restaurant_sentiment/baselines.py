@@ -15,14 +15,16 @@ from .metrics import evaluate_predictions
 from .reporting import experiment_signature
 
 
-def _load_verified_splits(data_dir: Path) -> tuple[list[dict], list[dict], dict]:
+def _load_verified_splits(data_dir: Path, evaluation_split: str = "test", evaluation_path: Path | None = None) -> tuple[list[dict], list[dict], dict]:
+    if evaluation_split not in {"validation", "test"}:
+        raise ValueError("evaluation_split must be validation or test")
     manifest_path = data_dir / "manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     fingerprint = manifest.get("fingerprint")
     if not isinstance(fingerprint, str) or not fingerprint:
         raise ValueError("Data manifest must contain a fingerprint")
     file_hashes = {}
-    for split in ("train", "test"):
+    for split in ("train",) if evaluation_path else ("train", evaluation_split):
         path = data_dir / f"{split}.jsonl"
         actual_hash = hashlib.sha256(path.read_bytes()).hexdigest()
         expected_hash = manifest.get("files", {}).get(split, {}).get("sha256")
@@ -30,15 +32,26 @@ def _load_verified_splits(data_dir: Path) -> tuple[list[dict], list[dict], dict]
             raise ValueError(f"Data fingerprint mismatch for {split}.jsonl")
         file_hashes[split] = actual_hash
     train = load_jsonl(data_dir / "train.jsonl")
-    test = load_jsonl(data_dir / "test.jsonl")
+    reference_path = Path(evaluation_path) if evaluation_path else data_dir / f"{evaluation_split}.jsonl"
+    evaluation_manifest = manifest
+    if evaluation_path:
+        evaluation_manifest = json.loads((reference_path.parent / "manifest.json").read_text(encoding="utf-8"))
+        expected_hash = evaluation_manifest.get("files", {}).get(reference_path.stem, {}).get("sha256")
+        actual_hash = hashlib.sha256(reference_path.read_bytes()).hexdigest()
+        if expected_hash != actual_hash or not evaluation_manifest.get("fingerprint"):
+            raise ValueError("External evaluation data fingerprint mismatch")
+        file_hashes["evaluation"] = actual_hash
+    test = load_jsonl(reference_path)
     if not train or not test:
         raise ValueError("Both train and test splits must be nonempty")
     if {row["id"] for row in train} & {row["id"] for row in test}:
         raise ValueError("Train and test splits contain overlapping review ids")
     return train, test, {
-        "data_fingerprint": fingerprint,
+        "data_fingerprint": evaluation_manifest["fingerprint"],
+        "training_data_fingerprint": fingerprint,
+        "evaluation_split": "external" if evaluation_path else evaluation_split,
         "data_files_sha256": file_hashes,
-        "reference_sha256": file_hashes["test"],
+        "reference_sha256": hashlib.sha256(reference_path.read_bytes()).hexdigest(),
     }
 
 
@@ -51,8 +64,9 @@ def _majority_labels(train: list[dict]) -> dict[str, str]:
     return labels
 
 
-def run_baseline(data_dir: Path, output_dir: Path, method: str = "majority", seed: int = 42) -> dict:
-    """Fit on train only, score test, and save predictions plus provenance.
+def run_baseline(data_dir: Path, output_dir: Path, method: str = "majority", seed: int = 42, *,
+                 evaluation_split: str = "test", evaluation_path: Path | None = None) -> dict:
+    """Fit on train only and score a frozen validation, test or external set.
 
     ``majority`` uses the standard library. ``tfidf`` imports scikit-learn
     lazily and fits one classifier per aspect, with a constant fallback for
@@ -60,7 +74,7 @@ def run_baseline(data_dir: Path, output_dir: Path, method: str = "majority", see
     """
     if method not in {"majority", "tfidf"}:
         raise ValueError(f"Unknown baseline method: {method}")
-    train, test, provenance = _load_verified_splits(Path(data_dir))
+    train, test, provenance = _load_verified_splits(Path(data_dir), evaluation_split, evaluation_path)
     train_texts = [row["text"] for row in train]
     test_texts = [row["text"] for row in test]
     fit_start = perf_counter()

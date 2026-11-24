@@ -1,0 +1,688 @@
+{
+  "reviewer": "AI assistant, single-pass qualitative coding; no independent human adjudication",
+  "sample_size": 50,
+  "sampling": "balanced across aspect-error patterns, then deterministic ID ranking; not population-representative",
+  "category_counts": {
+    "mixed_polarity": 20,
+    "long_context": 4,
+    "price_expression": 6,
+    "annotation_question": 19,
+    "aspect_scope": 16,
+    "absent_aspect": 12,
+    "negation": 3,
+    "nonstandard_text": 1,
+    "domain_shift": 1
+  },
+  "annotation_questions": 23,
+  "annotation_policy": "Potential inconsistencies only; original references and evaluation scores remain unchanged.",
+  "source_worksheet_sha256": "3313fba040ee03515af45bc09fc94cd3f34d44052a1a2a54c3a9688548673a80",
+  "cases": [
+    {
+      "case_number": 1,
+      "id": "adfeaadfd4decd2adf6ea511dd0bd0f3aa2b5f6c4ad27957edce90c702df6160",
+      "wrong_aspects": [
+        "Cuisine"
+      ],
+      "categories": [
+        "mixed_polarity"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Food praise and complaints concern different dishes; the classifier retains only the positive side."
+    },
+    {
+      "case_number": 2,
+      "id": "c26abaf26e7d67b69dcef014eb06a37e4d5d200976deebfd283cf8aab3a34591",
+      "wrong_aspects": [
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "long_context"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Multiple food polarities are lost. Service mixedness also needs an independent annotation check."
+    },
+    {
+      "case_number": 3,
+      "id": "497473706d54cbbcf2dc8865257c649f545f951bdf0b060b688143bd41e57abe",
+      "wrong_aspects": [
+        "Prix"
+      ],
+      "categories": [
+        "price_expression"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "An abbreviated value-for-money expression is not recognized as a price judgment."
+    },
+    {
+      "case_number": 4,
+      "id": "1e9c389a6e8bbf6cb7b16d79b221f446bbcafb36144fafb5ae336480266ac448",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine"
+      ],
+      "categories": [
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Food is described as acceptable without an explicit opposing opinion; the price label also relies on interpretation of a number."
+    },
+    {
+      "case_number": 5,
+      "id": "531f8a8bcb76c5c263400c48792a301ccdf3319f4f4bb379669a93fd2fd041d7",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "aspect_scope",
+        "long_context"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Positive food words dominate mixed food and negative value judgments; explicit reception praise conflicts with absent-service annotation."
+    },
+    {
+      "case_number": 6,
+      "id": "22f44432cbedc5a2147e6b67839e2064c44ec5fe08ff7c931eb80f51955b2619",
+      "wrong_aspects": [
+        "Prix",
+        "Service"
+      ],
+      "categories": [
+        "price_expression",
+        "mixed_polarity"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Value and changing service conditions require integrating several clauses."
+    },
+    {
+      "case_number": 7,
+      "id": "9a40d6bc899daa46802da2373cef6bfbab07923e0b084fba3003d65a1938ed5c",
+      "wrong_aspects": [
+        "Service"
+      ],
+      "categories": [
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "General food/atmosphere praise is incorrectly extended to unmentioned service."
+    },
+    {
+      "case_number": 8,
+      "id": "3d902ff4b161976eb75d491a0df7eeb3a5ca8f145d696e78ca42304d114a18b3",
+      "wrong_aspects": [
+        "Cuisine"
+      ],
+      "categories": [
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Explicit food praise is marked absent; the positive service reference has no clear separate service evidence."
+    },
+    {
+      "case_number": 9,
+      "id": "6c92e6ecebca65be9cd44383f87aac63598e2693452cc6dc0f91338ea37b0990",
+      "wrong_aspects": [
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "long_context"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Delays and staff efforts coexist, as do food disappointment and dessert praise."
+    },
+    {
+      "case_number": 10,
+      "id": "9d20b3d04e4efc19d7aa4eccae9ff93342a4053d0b789949f0f7ed99174f44bc",
+      "wrong_aspects": [
+        "Prix"
+      ],
+      "categories": [
+        "aspect_scope"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Explicit price criticism is lost amid positive food and staff opinions."
+    },
+    {
+      "case_number": 11,
+      "id": "3ccb9ab26c5f4b0aec2425a19f67a167b5407fb95cff520baa830a24555534cd",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine"
+      ],
+      "categories": [
+        "aspect_scope"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "A complaint about dessert prices is not a positive food-quality judgment."
+    },
+    {
+      "case_number": 12,
+      "id": "225a3f87e703b35650437bd708d038790eb1e4eec946a0533f76266e073d79fe",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "negation"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Acceptable main dishes and disappointing desserts are mixed; negated expensive pricing is missed."
+    },
+    {
+      "case_number": 13,
+      "id": "cc6c5d44fbf08b6f4c80f7134ccc3d08995ab6accaef89745962d4be5e1d6770",
+      "wrong_aspects": [
+        "Prix",
+        "Service"
+      ],
+      "categories": [
+        "annotation_question",
+        "absent_aspect"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "No clear price opinion supports the positive price reference; service is also inferred from general appreciation."
+    },
+    {
+      "case_number": 14,
+      "id": "f68e13f3e94ab65fa09fbc10255aba73185e7275cc8827ad4051460b7c137547",
+      "wrong_aspects": [
+        "Service"
+      ],
+      "categories": [
+        "aspect_scope",
+        "long_context"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Food praise masks detailed complaints about organization and staff behavior."
+    },
+    {
+      "case_number": 15,
+      "id": "21bb349a2f5c8e9b0b329762108f3820059decd2325fe187ad623654aa722bb7",
+      "wrong_aspects": [
+        "Cuisine"
+      ],
+      "categories": [
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Reception complaints are incorrectly transferred to food, which is not assessed."
+    },
+    {
+      "case_number": 16,
+      "id": "17824465c1deffd4a04a2394fb227fb914ed709bb88c33437703f93b5e0b9031",
+      "wrong_aspects": [
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "aspect_scope",
+        "mixed_polarity"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Explicit staff praise is reversed and food complaints are lost; a positive food exception also merits annotation review."
+    },
+    {
+      "case_number": 17,
+      "id": "f6ce5aa7588d4ae93fd1fbc354d94c3a7bc60ccad378460035b04d3e25996966",
+      "wrong_aspects": [
+        "Prix"
+      ],
+      "categories": [
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "The text praises food and staff without a price judgment supporting its positive price reference."
+    },
+    {
+      "case_number": 18,
+      "id": "fce237f6cf79a0bc8d7ca7df9a2061f43d47ef90da145fb2051f94508ec1a800",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine"
+      ],
+      "categories": [
+        "aspect_scope",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Food criticism is masked by decor/staff praise; explicit expensive wine conflicts with absent-price annotation."
+    },
+    {
+      "case_number": 19,
+      "id": "7b4b41d9a3fdbcef1217444b2c620d3f7cef691daf3fe36c17d9b3bc113dfcea",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "A praised dish and quick serving coexist with complaints; single-negative food/service references need checking."
+    },
+    {
+      "case_number": 20,
+      "id": "122adab095c5906d6c943eb04db8977a825e4755c0f7a4b76b7d1170de79beb6",
+      "wrong_aspects": [
+        "Prix",
+        "Service"
+      ],
+      "categories": [
+        "aspect_scope",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "A delay is missed; the positive price reference has no explicit price evidence."
+    },
+    {
+      "case_number": 21,
+      "id": "296040bdebcd3163faa499648219559582182c12d95d96d2e0ed50cfee178a87",
+      "wrong_aspects": [
+        "Service"
+      ],
+      "categories": [
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Food dissatisfaction does not establish positive service."
+    },
+    {
+      "case_number": 22,
+      "id": "25dfb0424cd3a0d40d40dde05c91adbc4149abb5ecae9132df502213b4e29ba2",
+      "wrong_aspects": [
+        "Cuisine"
+      ],
+      "categories": [
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Cleanliness and staff opinions do not establish positive food quality."
+    },
+    {
+      "case_number": 23,
+      "id": "9c6695e9c798e27a0f7bdd9e4d943c964dfdac26d010bf976d0a140df6288add",
+      "wrong_aspects": [
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Explicit praise of both food and staff contradicts negative food and service references."
+    },
+    {
+      "case_number": 24,
+      "id": "2e60ee9b4b2b3c7dcbf5cd9073afc008586c811aaac38219ab128fdcfd5f8010",
+      "wrong_aspects": [
+        "Prix"
+      ],
+      "categories": [
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "No stated price judgment supports the positive price reference."
+    },
+    {
+      "case_number": 25,
+      "id": "6ab7246576e0e8f11bfa7b4017edfbdb856a81cd620512a04a58f14fc1081a67",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "aspect_scope"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "A positive beverage exception coexists with food complaints, and explicit price criticism is missed."
+    },
+    {
+      "case_number": 26,
+      "id": "7a25c29b808e588d9baf0cb67c59310306c810181a7d4044943b5c024c420a59",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "aspect_scope",
+        "mixed_polarity",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Food exceptions and service complaints are collapsed into praise; the mixed-price reference needs clarification."
+    },
+    {
+      "case_number": 27,
+      "id": "0c7786319b086093b13947380ed67da13ae278d8ad2ba1621c07f774bc1e2f04",
+      "wrong_aspects": [
+        "Prix",
+        "Service"
+      ],
+      "categories": [
+        "price_expression",
+        "nonstandard_text"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Noisy wording makes food interpretation uncertain; refusal-to-pay phrasing conveys negative value."
+    },
+    {
+      "case_number": 28,
+      "id": "8ba4b113db7ff86fb5fe4a213e7d380b921ae2e848c402d2f8c06a10d6abcd6a",
+      "wrong_aspects": [
+        "Service"
+      ],
+      "categories": [
+        "mixed_polarity"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Acceptable service is followed by a specific complaint about unequal treatment."
+    },
+    {
+      "case_number": 29,
+      "id": "95cc3c6b0b104dbadfb2f7245baea5cd8419a2d7c8932b46433fab96f6c665e2",
+      "wrong_aspects": [
+        "Cuisine"
+      ],
+      "categories": [
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Dish names appear in a service-timing complaint without food-quality praise."
+    },
+    {
+      "case_number": 30,
+      "id": "304d8e1461362e5b07da06ca49ff1c3e19bed6f5cf2d21c95835d56e3ff5ba5e",
+      "wrong_aspects": [
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "domain_shift",
+        "aspect_scope"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Hotel/breakfast context differs from restaurant dining; food-quality and reception complaints are not recovered."
+    },
+    {
+      "case_number": 31,
+      "id": "ae8a878a9c7b754f73e7a9ea7c439e20cbd2deecfb1d3bea7185598da5ac4239",
+      "wrong_aspects": [
+        "Prix"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Higher comparative prices and acceptable final value coexist; their interpretation is annotation-sensitive."
+    },
+    {
+      "case_number": 32,
+      "id": "3a892de4b83f6042501d86dcd82cbd17d460c5c07e42cbecb0933031abfb93dc",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Food praise is qualified by complaints; the mixed-price label has no clearly opposing price judgments."
+    },
+    {
+      "case_number": 33,
+      "id": "dba6c3f8d9d9bdd51b975ef9bd853521d1c4b67056259653cf7ea2dc7d2073e0",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "aspect_scope",
+        "mixed_polarity",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "A positive beef exception is outweighed by complaints in the reference; strict mixed-food guidance warrants checking."
+    },
+    {
+      "case_number": 34,
+      "id": "236f0117799e1dc3f2e33a9302e81fa68a658711006ff0d9e687992e0f6b29c2",
+      "wrong_aspects": [
+        "Prix",
+        "Service"
+      ],
+      "categories": [
+        "aspect_scope",
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Explicit expensive pricing is missed; waiting/ambience does not establish positive staff behavior."
+    },
+    {
+      "case_number": 35,
+      "id": "9949ee4f0f257d41f56470d9135ef015b2ae281e178bec7c0ea2200701dbf05a",
+      "wrong_aspects": [
+        "Service"
+      ],
+      "categories": [
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Cuisine and setting praise are extended to unmentioned service."
+    },
+    {
+      "case_number": 36,
+      "id": "8d8836b8409593dcf9f308ee8feab0d4b2fe07b08c6e09521f559c90eb136b63",
+      "wrong_aspects": [
+        "Cuisine"
+      ],
+      "categories": [
+        "mixed_polarity"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Different flavors receive explicitly opposite food judgments."
+    },
+    {
+      "case_number": 37,
+      "id": "00975ccb8e152af9129b2d5f72a627605f7ea80e3cac284406bac59ddcc87890",
+      "wrong_aspects": [
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Several food complaints and positive exceptions are collapsed; positive service is invented."
+    },
+    {
+      "case_number": 38,
+      "id": "337fda0bbc8bbd1f96319264ac4282c0b07a974e4e0ddb5419e442cb9ee82702",
+      "wrong_aspects": [
+        "Prix"
+      ],
+      "categories": [
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Food and staff praise do not supply a price opinion for the positive price reference."
+    },
+    {
+      "case_number": 39,
+      "id": "5b51f488937c723689ebc46678e11c0586844f68eb629c4de3206ba5dcd1ade3",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Weakly evaluative wording may use neutral in an ordinary sense rather than the task-defined mixed sense."
+    },
+    {
+      "case_number": 40,
+      "id": "2bffa0f06224db25a7508c271b45a95d206e25ad3f45d60edb3835e0cb8fe0ff",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Relative value and qualified food judgments are nuanced; the mixed-service reference lacks a clear negative service opinion."
+    },
+    {
+      "case_number": 41,
+      "id": "791ed82ad3acbeeab6bc1b52e87c5463e65328a128d4d7207f572e21cab506da",
+      "wrong_aspects": [
+        "Prix",
+        "Service"
+      ],
+      "categories": [
+        "negation",
+        "aspect_scope"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Negated staff friendliness and a negative value expression are incorrectly treated as positive."
+    },
+    {
+      "case_number": 42,
+      "id": "9fc6af0f97f7924a4e19893037e5a40b86ac9222288547df6359aebb42ed88a5",
+      "wrong_aspects": [
+        "Service"
+      ],
+      "categories": [
+        "absent_aspect"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Food praise in a takeaway review is extended to service without evidence."
+    },
+    {
+      "case_number": 43,
+      "id": "27c0787a347b1314a443d7cbf36b7c28e7d9e6a6eee2d77de0170477a41225bc",
+      "wrong_aspects": [
+        "Cuisine"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Both food and staff have positive and negative evidence, while references use single-polarity labels."
+    },
+    {
+      "case_number": 44,
+      "id": "a53a38fbe625522bb7782daed4e3f40a697b63de746c6bb43adffd5256ebf073",
+      "wrong_aspects": [
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "absent_aspect",
+        "annotation_question"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Seating/layout complaints do not imply food praise; the mixed-service reference needs policy clarification."
+    },
+    {
+      "case_number": 45,
+      "id": "7a33f1b4bc6e8d0c18906de79a139f2fffa99bcbd4bcb5711db351bf6823b9ce",
+      "wrong_aspects": [
+        "Prix"
+      ],
+      "categories": [
+        "price_expression"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "An explicit synonym for attractive pricing is missed."
+    },
+    {
+      "case_number": 46,
+      "id": "07f729416f6e2c2e4a55a431e109f929e1b76335a677510d585e369f7adc6146",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine"
+      ],
+      "categories": [
+        "mixed_polarity",
+        "price_expression"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Praised main food and disappointing desserts/drinks require mixed food; value is expressed indirectly."
+    },
+    {
+      "case_number": 47,
+      "id": "2cb073b37bed8e9d2ba05d361c9a08b74d3b0553a56f77b1e0417552894ed974",
+      "wrong_aspects": [
+        "Prix",
+        "Cuisine",
+        "Service"
+      ],
+      "categories": [
+        "absent_aspect",
+        "price_expression"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "A recommendation and menu price are interpreted as value, but do not establish food or service quality."
+    },
+    {
+      "case_number": 48,
+      "id": "e0f92daae731a8aa8453764ac6e05edfe0ee439871a6f1fd49b25743da917be5",
+      "wrong_aspects": [
+        "Prix",
+        "Service"
+      ],
+      "categories": [
+        "annotation_question",
+        "aspect_scope"
+      ],
+      "annotation_check": "possible",
+      "analyst_note": "Explicit expensive pricing conflicts with the absent-price reference; owner disrespect should attach to service."
+    },
+    {
+      "case_number": 49,
+      "id": "cdcc8d2723aca2b065f030a4c69073c061437992b242ab568e3bb7fcba3d49b3",
+      "wrong_aspects": [
+        "Service"
+      ],
+      "categories": [
+        "aspect_scope"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Negative hygiene and value comments mask explicit positive staff behavior."
+    },
+    {
+      "case_number": 50,
+      "id": "c8d4a5dd0a5c6955a3012cbb50799da7f137521c77542053e1586d3a4d035b6e",
+      "wrong_aspects": [
+        "Cuisine"
+      ],
+      "categories": [
+        "aspect_scope",
+        "negation"
+      ],
+      "annotation_check": "not_flagged",
+      "analyst_note": "Complaints about industrial, insufficient food are missed despite correctly negative service."
+    }
+  ]
+}

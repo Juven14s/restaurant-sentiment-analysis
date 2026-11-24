@@ -1,0 +1,21 @@
+{
+  "n_samples": 40,
+  "recovered_by_single_fence": 38,
+  "reference_sha256": "f9bf4229cbdb72d67a157d9f4d43c56b675cbf8857df26d6ed2f95670acc5f5b",
+  "data_fingerprint": "4129787728dd94fa09f5180fd3d9fce9a011a4e067395596d29725acf2f64325",
+  "raw_predictions_sha256": "bc83ee95db786ad6f2b5ade5115b2aa840d004b396eebc552c9d5e6b7be793d1",
+  "normalization": "unwrap_one_complete_json_markdown_fence_v1; no label/key repair",
+  "strict": {
+    "macro_f1": 0.0,
+    "macro_accuracy": 0.0,
+    "joint_exact_match": 0.0,
+    "json_valid_rate": 0.0
+  },
+  "single_fence": {
+    "macro_f1": 0.2688526725552429,
+    "macro_accuracy": 0.47500000000000003,
+    "joint_exact_match": 0.15,
+    "json_valid_rate": 0.95
+  },
+  "limitation": "Normalization was introduced after inspecting validation outputs; strict scores remain primary for the original API contract."
+}

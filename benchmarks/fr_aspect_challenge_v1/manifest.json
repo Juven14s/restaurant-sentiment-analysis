@@ -1,0 +1,51 @@
+{
+  "categories": {
+    "absent_opinions": 10,
+    "aspect_separation": 10,
+    "attribution_and_scope": 10,
+    "implicit_aspects": 10,
+    "instruction_like_text": 10,
+    "long_context": 10,
+    "mixed_sentiment": 10,
+    "negation": 10
+  },
+  "files": {
+    "challenge": {
+      "count": 80,
+      "path": "challenge.jsonl",
+      "sha256": "0840a0973bef7c42ff8fef4fefdc97973a3ebd6fba3047c476901ffcf9bf51d1"
+    }
+  },
+  "fingerprint": "cb1e595f77913b05b3bddbedc8bdc958f28c940bab512b4eb2702973b55fc23e",
+  "label_support": {
+    "Cuisine": {
+      "NE": 48,
+      "Neutre": 5,
+      "Négative": 12,
+      "Positive": 15
+    },
+    "Prix": {
+      "NE": 54,
+      "Neutre": 5,
+      "Négative": 12,
+      "Positive": 9
+    },
+    "Service": {
+      "NE": 50,
+      "Neutre": 5,
+      "Négative": 12,
+      "Positive": 13
+    }
+  },
+  "limitations": [
+    "Assistant-authored and assistant-reviewed labels; not independently human validated.",
+    "Diagnostic convenience sample, not representative restaurant-review prevalence.",
+    "Frozen before model scoring; do not tune prompts against these reported scores."
+  ],
+  "provenance": {
+    "annotations_sha256": "dd61ed8e63c66411cab4d5d4875aeada73f0524f76a803bcd7e53167954da36d",
+    "kind": "assistant_authored_diagnostic_challenge",
+    "reference_sha256": "0840a0973bef7c42ff8fef4fefdc97973a3ebd6fba3047c476901ffcf9bf51d1",
+    "version": 1
+  }
+}

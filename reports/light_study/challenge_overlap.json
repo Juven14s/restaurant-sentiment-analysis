@@ -1,0 +1,9 @@
+{
+  "challenge_fingerprint": "cb1e595f77913b05b3bddbedc8bdc958f28c940bab512b4eb2702973b55fc23e",
+  "normalized_text_overlap": {
+    "train": 0,
+    "validation": 0,
+    "test": 0
+  },
+  "limitations": "Exact normalized identity check only; no semantic-near-duplicate guarantee."
+}

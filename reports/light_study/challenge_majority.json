@@ -1,0 +1,223 @@
+{
+  "n_samples": 80,
+  "labels": [
+    "Positive",
+    "Négative",
+    "Neutre",
+    "NE"
+  ],
+  "confusion_matrix_axes": {
+    "rows": "reference",
+    "columns": "prediction"
+  },
+  "per_aspect": {
+    "Prix": {
+      "accuracy": 0.675,
+      "macro_f1": 0.20149253731343283,
+      "per_class": {
+        "Positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 9
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "NE": {
+          "precision": 0.675,
+          "recall": 1.0,
+          "f1": 0.8059701492537313,
+          "support": 54
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          9
+        ],
+        [
+          0,
+          0,
+          0,
+          12
+        ],
+        [
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          54
+        ]
+      ],
+      "invalid_count": 0
+    },
+    "Cuisine": {
+      "accuracy": 0.1875,
+      "macro_f1": 0.07894736842105263,
+      "per_class": {
+        "Positive": {
+          "precision": 0.1875,
+          "recall": 1.0,
+          "f1": 0.3157894736842105,
+          "support": 15
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 48
+        }
+      },
+      "confusion_matrix": [
+        [
+          15,
+          0,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          48,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 0
+    },
+    "Service": {
+      "accuracy": 0.1625,
+      "macro_f1": 0.06989247311827956,
+      "per_class": {
+        "Positive": {
+          "precision": 0.1625,
+          "recall": 1.0,
+          "f1": 0.27956989247311825,
+          "support": 13
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 12
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 50
+        }
+      },
+      "confusion_matrix": [
+        [
+          13,
+          0,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0
+        ],
+        [
+          50,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 0
+    }
+  },
+  "macro_accuracy": 0.34166666666666673,
+  "macro_f1": 0.11677745961758834,
+  "joint_exact_match": 0.0,
+  "json_valid_rate": 1.0,
+  "method": "majority",
+  "seed": 42,
+  "training_samples": 3678,
+  "fit_seconds": 0.0011578909998206655,
+  "infer_seconds": 7.278999873960856e-06,
+  "model_config": {
+    "majority_labels": {
+      "Prix": "NE",
+      "Cuisine": "Positive",
+      "Service": "Positive"
+    },
+    "tie_break_order": [
+      "Positive",
+      "Négative",
+      "Neutre",
+      "NE"
+    ]
+  },
+  "data_fingerprint": "cb1e595f77913b05b3bddbedc8bdc958f28c940bab512b4eb2702973b55fc23e",
+  "training_data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "evaluation_split": "external",
+  "data_files_sha256": {
+    "train": "c5183b88eed136b2bdd406d123b5acc152dc58e61c14455d21428d1345f8327c",
+    "evaluation": "0840a0973bef7c42ff8fef4fefdc97973a3ebd6fba3047c476901ffcf9bf51d1"
+  },
+  "reference_sha256": "0840a0973bef7c42ff8fef4fefdc97973a3ebd6fba3047c476901ffcf9bf51d1",
+  "runtime": {
+    "python": "3.12.3",
+    "device": "cpu",
+    "packages": {}
+  },
+  "experiment_signature": "d2f20414b8b97d4b5d7ec537ed8d8bb9d493b17d7bec4bf02861dfe44e55c310",
+  "implementation_sha256": "657d37190f4dd0270d8fe7394847644b3bb9ebf3a8d732188b765af65ebb859b"
+}

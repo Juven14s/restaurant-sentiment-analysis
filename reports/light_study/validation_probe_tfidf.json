@@ -1,0 +1,223 @@
+{
+  "n_samples": 40,
+  "labels": [
+    "Positive",
+    "Négative",
+    "Neutre",
+    "NE"
+  ],
+  "confusion_matrix_axes": {
+    "rows": "reference",
+    "columns": "prediction"
+  },
+  "per_aspect": {
+    "Prix": {
+      "accuracy": 0.8,
+      "macro_f1": 0.4758064516129032,
+      "per_class": {
+        "Positive": {
+          "precision": 0.5,
+          "recall": 0.25,
+          "f1": 0.3333333333333333,
+          "support": 8
+        },
+        "Négative": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 4
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "NE": {
+          "precision": 0.8235294117647058,
+          "recall": 1.0,
+          "f1": 0.9032258064516129,
+          "support": 28
+        }
+      },
+      "confusion_matrix": [
+        [
+          2,
+          0,
+          0,
+          6
+        ],
+        [
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          28
+        ]
+      ],
+      "invalid_count": 0
+    },
+    "Cuisine": {
+      "accuracy": 0.65,
+      "macro_f1": 0.32172131147540983,
+      "per_class": {
+        "Positive": {
+          "precision": 0.6486486486486487,
+          "recall": 1.0,
+          "f1": 0.7868852459016393,
+          "support": 24
+        },
+        "Négative": {
+          "precision": 0.6666666666666666,
+          "recall": 0.4,
+          "f1": 0.5,
+          "support": 5
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 7
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4
+        }
+      },
+      "confusion_matrix": [
+        [
+          24,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          7,
+          0,
+          0,
+          0
+        ],
+        [
+          3,
+          1,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 0
+    },
+    "Service": {
+      "accuracy": 0.725,
+      "macro_f1": 0.4119458128078818,
+      "per_class": {
+        "Positive": {
+          "precision": 0.78125,
+          "recall": 0.9615384615384616,
+          "f1": 0.8620689655172413,
+          "support": 26
+        },
+        "Négative": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 6
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3
+        },
+        "NE": {
+          "precision": 0.5,
+          "recall": 0.2,
+          "f1": 0.28571428571428575,
+          "support": 5
+        }
+      },
+      "confusion_matrix": [
+        [
+          25,
+          1,
+          0,
+          0
+        ],
+        [
+          2,
+          3,
+          0,
+          1
+        ],
+        [
+          1,
+          2,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          1
+        ]
+      ],
+      "invalid_count": 0
+    }
+  },
+  "macro_accuracy": 0.725,
+  "macro_f1": 0.40315785863206494,
+  "joint_exact_match": 0.45,
+  "json_valid_rate": 1.0,
+  "method": "tfidf",
+  "seed": 42,
+  "training_samples": 3678,
+  "fit_seconds": 12.485315756999626,
+  "infer_seconds": 0.017660461000559735,
+  "model_config": {
+    "ngram_range": [
+      1,
+      2
+    ],
+    "max_features": 50000,
+    "sublinear_tf": true,
+    "logistic_regression_max_iter": 1000,
+    "constant_aspects": [],
+    "vocabulary_size": 50000
+  },
+  "data_fingerprint": "4129787728dd94fa09f5180fd3d9fce9a011a4e067395596d29725acf2f64325",
+  "training_data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "evaluation_split": "external",
+  "data_files_sha256": {
+    "train": "c5183b88eed136b2bdd406d123b5acc152dc58e61c14455d21428d1345f8327c",
+    "evaluation": "f9bf4229cbdb72d67a157d9f4d43c56b675cbf8857df26d6ed2f95670acc5f5b"
+  },
+  "reference_sha256": "f9bf4229cbdb72d67a157d9f4d43c56b675cbf8857df26d6ed2f95670acc5f5b",
+  "runtime": {
+    "python": "3.12.3",
+    "device": "cpu",
+    "packages": {
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "experiment_signature": "a51e80027d5c486f9dae6b983b85b66c77126e1434fd0322c38cd6e5f686747f",
+  "implementation_sha256": "657d37190f4dd0270d8fe7394847644b3bb9ebf3a8d732188b765af65ebb859b"
+}

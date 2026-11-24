@@ -9,9 +9,23 @@ negative opinions**, and `NE` means the aspect is not expressed.
 
 Research question: **how do a linear baseline, a fine-tuned French encoder and a
 small generative model compare in quality and compute cost, and what does LoRA
-adaptation change?** Full CamemBERT and Qwen scores must be measured on a GPU.
+adaptation change?** Full CamemBERT and LoRA adaptation scores remain to be measured.
 The old coursework's reported 85% accuracy is not a result of this protocol.
 See [experiment status](docs/experiments.md).
+
+## CPU-only diagnostic study
+
+For a path without neural training, see the [study guide](docs/light_study.md)
+and [English research report](docs/light_research_report.md). It includes a
+50-case validation error review, an original 80-case challenge, and bounded
+Qwen inference on CPU with an explicit strict-versus-Markdown-format ablation.
+It also audits 12 train-only paraphrases without downstream training.
+Assistant-written annotations are not an independently validated human gold set.
+
+```bash
+python -m pip install -e '.[baseline]'
+python scripts/run_light_study.py --data-dir data/processed-v1
+```
 
 ## Start with Colab
 
@@ -161,7 +175,7 @@ data/                     Local sources and frozen splits (ignored by Git)
 outputs/                  Local checkpoints and predictions (ignored by Git)
 ```
 
-The archived paraphrase module is unvalidated. Controlled synthetic-data studies,
+The archived paraphrase module is unvalidated. Downstream augmentation studies,
 DPO and cluster runs are future work, not demonstrated capabilities.
 
 Author: Rassem DJIMADOUM.

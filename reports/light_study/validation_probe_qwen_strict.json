@@ -1,0 +1,213 @@
+{
+  "n_samples": 40,
+  "labels": [
+    "Positive",
+    "Négative",
+    "Neutre",
+    "NE"
+  ],
+  "confusion_matrix_axes": {
+    "rows": "reference",
+    "columns": "prediction"
+  },
+  "per_aspect": {
+    "Prix": {
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "Positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 8
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 28
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 40
+    },
+    "Cuisine": {
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "Positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 24
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 7
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 4
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 40
+    },
+    "Service": {
+      "accuracy": 0.0,
+      "macro_f1": 0.0,
+      "per_class": {
+        "Positive": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 26
+        },
+        "Négative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 6
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3
+        },
+        "NE": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 5
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "invalid_count": 40
+    }
+  },
+  "macro_accuracy": 0.0,
+  "macro_f1": 0.0,
+  "joint_exact_match": 0.0,
+  "json_valid_rate": 0.0,
+  "reference_sha256": "f9bf4229cbdb72d67a157d9f4d43c56b675cbf8857df26d6ed2f95670acc5f5b",
+  "data_fingerprint": "4129787728dd94fa09f5180fd3d9fce9a011a4e067395596d29725acf2f64325",
+  "method": "llm",
+  "seed": null,
+  "experiment_signature": "7535ca484ff7c0bb74dd016810687522b0a7ea9325f958330e9bb0349c53b5b6",
+  "inference_seconds": 231.36688030699952,
+  "runtime": {
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.8.0+cpu",
+      "transformers": "4.56.2",
+      "datasets": "4.1.1",
+      "accelerate": "1.10.1",
+      "trl": "0.23.1",
+      "peft": "0.17.1"
+    },
+    "git_dirty": true,
+    "device": "cpu",
+    "gpu": null,
+    "python": "3.12.3",
+    "git_commit": "e8b729e7c6787d269d124f245b66f0dbbd6ad0fc",
+    "cuda": null
+  }
+}

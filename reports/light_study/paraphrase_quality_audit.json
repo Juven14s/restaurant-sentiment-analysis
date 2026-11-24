@@ -1,0 +1,186 @@
+{
+  "n_pairs": 12,
+  "source_split": "train",
+  "source_data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "selection": "three per Cuisine reference label, 8-50 words, fixed hash ranking",
+  "model": "Qwen/Qwen3-0.6B",
+  "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+  "device": "cpu",
+  "cpu_threads": 4,
+  "do_sample": false,
+  "max_new_tokens": 160,
+  "thinking": false,
+  "elapsed_seconds": 92.10014831799981,
+  "generation_only": true,
+  "downstream_training": false,
+  "review": "single-pass assistant review, not independent human adjudication",
+  "semantic_preservation_counts": {
+    "fail": 4,
+    "uncertain": 3,
+    "pass": 5
+  },
+  "source_annotation_questions": 7,
+  "exact_copies": 1,
+  "heldout_exact_overlaps": 0,
+  "candidate_pairs_after_review": 2,
+  "acceptance_rule": "semantic pass + source labels not flagged + no exact copy + no heldout exact overlap + no output truncation",
+  "limitations": [
+    "Small deliberate class-stratified audit, not a production acceptance-rate estimate.",
+    "Source annotation questions are unconfirmed and original labels remain unchanged.",
+    "Candidates have not been used for training; no downstream accuracy gain is claimed."
+  ],
+  "private_pairs_sha256": "9799bbdedaedfa3f1642324925761d4d9bb6eaca8ece84920c7c78f067054664",
+  "cases": [
+    {
+      "case_number": 1,
+      "source_id": "cc857fb4456654b12fff1113445de3f9ed3319610dc298a83d35c4513daddd87",
+      "semantic_preservation": "fail",
+      "source_label_check": "possible",
+      "reason_codes": [
+        "semantic_corruption",
+        "opinion_or_fact_omission"
+      ],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "Negated waste and takeaway information is corrupted; source service absence also merits review."
+    },
+    {
+      "case_number": 2,
+      "source_id": "5d856a5b5422d3bbfd25b931f0707dc944689bb17ec5d9155aa5a80e25d705f4",
+      "semantic_preservation": "uncertain",
+      "source_label_check": "possible",
+      "reason_codes": [
+        "ambiguous_price_wording"
+      ],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "High cost becomes ambiguous high value; source food-variety criticism may conflict with a single-positive food label."
+    },
+    {
+      "case_number": 3,
+      "source_id": "7fa4c0c771b0ed2ea212f924a57246c09080fe93d732d173743810d1d48414ba",
+      "semantic_preservation": "pass",
+      "source_label_check": "not_flagged",
+      "reason_codes": [],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": true,
+      "review_note": "The food and advice praise are preserved, with small wording changes."
+    },
+    {
+      "case_number": 4,
+      "source_id": "bdf10647ea7c3ae6eb5cdc673f48f9bcae23d39a9114d461b9b1f20809e37984",
+      "semantic_preservation": "fail",
+      "source_label_check": "possible",
+      "reason_codes": [
+        "price_polarity_flip",
+        "service_opinion_drift"
+      ],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "Negative value becomes good value and waiting becomes expectations; source food polarity is itself debatable."
+    },
+    {
+      "case_number": 5,
+      "source_id": "fc287c29c3e44c5e8a7e7bc097887e8f61924f74d2d3af50f780898620129e13",
+      "semantic_preservation": "fail",
+      "source_label_check": "not_flagged",
+      "reason_codes": [
+        "price_opinion_omission"
+      ],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "The explicit expensive judgment is removed, leaving only price numbers."
+    },
+    {
+      "case_number": 6,
+      "source_id": "f4df22b26bce02d32929b18bc18ee74c1635d27e5522e2004b13ab3af081a1b0",
+      "semantic_preservation": "pass",
+      "source_label_check": "possible",
+      "reason_codes": [],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "Almost copied with opinions retained; source service criticism and gratitude may require a mixed label."
+    },
+    {
+      "case_number": 7,
+      "source_id": "8d8bcfee07cbbffc6696cf58a9c40cd1071bca6f92cc3f35117032563973694d",
+      "semantic_preservation": "pass",
+      "source_label_check": "not_flagged",
+      "reason_codes": [],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": true,
+      "review_note": "Food praise and presentation criticism remain mixed; wording diversity is limited."
+    },
+    {
+      "case_number": 8,
+      "source_id": "5afc4cae04516a641aa760b841543387633781a0499c9842eeef045b9a0575c2",
+      "semantic_preservation": "pass",
+      "source_label_check": "possible",
+      "reason_codes": [
+        "exact_copy"
+      ],
+      "exact_normalized_copy": true,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "Output is an exact copy; source mixed-food label lacks a clear opposing food opinion."
+    },
+    {
+      "case_number": 9,
+      "source_id": "55800a81a8eb46e78f7a922945319e5311d3d3a22a2948ddff641943e8738791",
+      "semantic_preservation": "pass",
+      "source_label_check": "possible",
+      "reason_codes": [],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "The qualified food praise and staff praise remain; source mixed-food annotation needs checking."
+    },
+    {
+      "case_number": 10,
+      "source_id": "3e112fa9194652332bea654ba00c0aaaf3ae9d4ae85a961b75575f6f0d8a5815",
+      "semantic_preservation": "uncertain",
+      "source_label_check": "not_flagged",
+      "reason_codes": [
+        "language_quality"
+      ],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "The main negative reception judgment remains but the reformulation is linguistically malformed."
+    },
+    {
+      "case_number": 11,
+      "source_id": "c42f81f7dc8b24de7fce7b9e66f30eda87ca09ca36eb9d7bb0e8703683001077",
+      "semantic_preservation": "uncertain",
+      "source_label_check": "not_flagged",
+      "reason_codes": [
+        "language_quality"
+      ],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "A spelling repair invents an inappropriate word; core seating complaint remains but quality is uncertain."
+    },
+    {
+      "case_number": 12,
+      "source_id": "792962953e1b3c87aa5c3de8debf9be1b82ce5e0b7588d5a163a7d0f0875379a",
+      "semantic_preservation": "fail",
+      "source_label_check": "possible",
+      "reason_codes": [
+        "factual_drift",
+        "food_opinion_omission"
+      ],
+      "exact_normalized_copy": false,
+      "heldout_exact_overlap": false,
+      "candidate_after_review": false,
+      "review_note": "A contrast conjunction becomes email information and reliable-food praise is lost; source aspect labels need checking."
+    }
+  ]
+}

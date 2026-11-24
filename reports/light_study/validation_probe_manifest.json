@@ -1,0 +1,17 @@
+{
+  "files": {
+    "probe": {
+      "count": 40,
+      "path": "probe.jsonl",
+      "sha256": "f9bf4229cbdb72d67a157d9f4d43c56b675cbf8857df26d6ed2f95670acc5f5b"
+    }
+  },
+  "fingerprint": "4129787728dd94fa09f5180fd3d9fce9a011a4e067395596d29725acf2f64325",
+  "options": {
+    "sampling": "sha256_seed_id_rank_without_labels",
+    "seed": 42,
+    "size": 40,
+    "source_sha256": "9bae916a868f774f8b312255ea5ab957d7ed98a4a18a9ee8040ea9eac3e1808b"
+  },
+  "purpose": "development_probe_not_final_test"
+}

@@ -57,7 +57,9 @@ Do not publish review text without redistribution permission.
 After the core benchmark, choose one bounded study: LoRA rank or augmentation
 quality. For augmentation, generate only from train, retain source IDs, reject
 copied/evaluation-overlapping texts, manually verify label preservation and
-compare original, unfiltered and filtered data. This is not implemented yet.
+compare original, unfiltered and filtered data. A bounded train-only generation
+and quality audit is now documented in the CPU-only report; downstream training
+comparisons with original/unfiltered/filtered data are not implemented.
 
 DPO needs a justified preference dataset and SFT comparison. Slurm/multi-GPU
 experience must come from actual runs; Colab does not demonstrate those skills.

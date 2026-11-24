@@ -1,0 +1,223 @@
+{
+  "n_samples": 460,
+  "labels": [
+    "Positive",
+    "Négative",
+    "Neutre",
+    "NE"
+  ],
+  "confusion_matrix_axes": {
+    "rows": "reference",
+    "columns": "prediction"
+  },
+  "per_aspect": {
+    "Prix": {
+      "accuracy": 0.7630434782608696,
+      "macro_f1": 0.4680646841570618,
+      "per_class": {
+        "Positive": {
+          "precision": 0.7142857142857143,
+          "recall": 0.4268292682926829,
+          "f1": 0.5343511450381679,
+          "support": 82
+        },
+        "Négative": {
+          "precision": 0.6111111111111112,
+          "recall": 0.3793103448275862,
+          "f1": 0.46808510638297873,
+          "support": 58
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 19
+        },
+        "NE": {
+          "precision": 0.784,
+          "recall": 0.9767441860465116,
+          "f1": 0.8698224852071006,
+          "support": 301
+        }
+      },
+      "confusion_matrix": [
+        [
+          35,
+          5,
+          0,
+          42
+        ],
+        [
+          6,
+          22,
+          0,
+          30
+        ],
+        [
+          5,
+          5,
+          0,
+          9
+        ],
+        [
+          3,
+          4,
+          0,
+          294
+        ]
+      ],
+      "invalid_count": 0
+    },
+    "Cuisine": {
+      "accuracy": 0.7804347826086957,
+      "macro_f1": 0.38926832322332905,
+      "per_class": {
+        "Positive": {
+          "precision": 0.7862232779097387,
+          "recall": 0.9910179640718563,
+          "f1": 0.8768211920529801,
+          "support": 334
+        },
+        "Négative": {
+          "precision": 0.7027027027027027,
+          "recall": 0.48148148148148145,
+          "f1": 0.5714285714285714,
+          "support": 54
+        },
+        "Neutre": {
+          "precision": 1.0,
+          "recall": 0.02564102564102564,
+          "f1": 0.05,
+          "support": 39
+        },
+        "NE": {
+          "precision": 1.0,
+          "recall": 0.030303030303030304,
+          "f1": 0.05882352941176471,
+          "support": 33
+        }
+      },
+      "confusion_matrix": [
+        [
+          331,
+          3,
+          0,
+          0
+        ],
+        [
+          28,
+          26,
+          0,
+          0
+        ],
+        [
+          33,
+          5,
+          1,
+          0
+        ],
+        [
+          29,
+          3,
+          0,
+          1
+        ]
+      ],
+      "invalid_count": 0
+    },
+    "Service": {
+      "accuracy": 0.7347826086956522,
+      "macro_f1": 0.4772772404226209,
+      "per_class": {
+        "Positive": {
+          "precision": 0.7375690607734806,
+          "recall": 0.960431654676259,
+          "f1": 0.834375,
+          "support": 278
+        },
+        "Négative": {
+          "precision": 0.6911764705882353,
+          "recall": 0.6266666666666667,
+          "f1": 0.6573426573426574,
+          "support": 75
+        },
+        "Neutre": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 22
+        },
+        "NE": {
+          "precision": 0.8,
+          "recall": 0.2823529411764706,
+          "f1": 0.41739130434782606,
+          "support": 85
+        }
+      },
+      "confusion_matrix": [
+        [
+          267,
+          8,
+          0,
+          3
+        ],
+        [
+          25,
+          47,
+          0,
+          3
+        ],
+        [
+          18,
+          4,
+          0,
+          0
+        ],
+        [
+          52,
+          9,
+          0,
+          24
+        ]
+      ],
+      "invalid_count": 0
+    }
+  },
+  "macro_accuracy": 0.7594202898550725,
+  "macro_f1": 0.4448700826010039,
+  "joint_exact_match": 0.4717391304347826,
+  "json_valid_rate": 1.0,
+  "method": "tfidf",
+  "seed": 42,
+  "training_samples": 3678,
+  "fit_seconds": 14.514267611999458,
+  "infer_seconds": 0.07099294899944653,
+  "model_config": {
+    "ngram_range": [
+      1,
+      2
+    ],
+    "max_features": 50000,
+    "sublinear_tf": true,
+    "logistic_regression_max_iter": 1000,
+    "constant_aspects": [],
+    "vocabulary_size": 50000
+  },
+  "data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "training_data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "evaluation_split": "validation",
+  "data_files_sha256": {
+    "train": "c5183b88eed136b2bdd406d123b5acc152dc58e61c14455d21428d1345f8327c",
+    "validation": "9bae916a868f774f8b312255ea5ab957d7ed98a4a18a9ee8040ea9eac3e1808b"
+  },
+  "reference_sha256": "9bae916a868f774f8b312255ea5ab957d7ed98a4a18a9ee8040ea9eac3e1808b",
+  "runtime": {
+    "python": "3.12.3",
+    "device": "cpu",
+    "packages": {
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "experiment_signature": "a51e80027d5c486f9dae6b983b85b66c77126e1434fd0322c38cd6e5f686747f",
+  "implementation_sha256": "657d37190f4dd0270d8fe7394847644b3bb9ebf3a8d732188b765af65ebb859b"
+}

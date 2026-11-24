@@ -1,9 +1,14 @@
 # Experiment status
 
 The CPU baselines below were measured locally on 24 November 2026 with Python
-3.12 and scikit-learn 1.7.2 for TF-IDF. Full pretrained CamemBERT/Qwen runs and
+3.12 and scikit-learn 1.7.2 for TF-IDF. Full CamemBERT/LoRA training runs and
 CUDA/4-bit compatibility have **not** been measured. Tiny random-model smoke
 tests validate software integration only; they are not research results.
+
+A subsequent [CPU-only diagnostic study](light_research_report.md) evaluates
+the frozen small Qwen model without training, reviews validation errors and
+scores an original targeted challenge. Its validation/challenge scores are
+separate from the historical frozen-test results below.
 
 ## Data audit
 

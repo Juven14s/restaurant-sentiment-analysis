@@ -1,0 +1,202 @@
+{
+  "majority": {
+    "absent_opinions": {
+      "n_samples": 10,
+      "macro_accuracy": 0.3666666666666667,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "aspect_separation": {
+      "n_samples": 10,
+      "macro_accuracy": 0.39999999999999997,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "attribution_and_scope": {
+      "n_samples": 10,
+      "macro_accuracy": 0.4000000000000001,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "implicit_aspects": {
+      "n_samples": 10,
+      "macro_accuracy": 0.3333333333333333,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "instruction_like_text": {
+      "n_samples": 10,
+      "macro_accuracy": 0.3,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "long_context": {
+      "n_samples": 10,
+      "macro_accuracy": 0.3333333333333333,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "mixed_sentiment": {
+      "n_samples": 10,
+      "macro_accuracy": 0.2333333333333333,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "negation": {
+      "n_samples": 10,
+      "macro_accuracy": 0.36666666666666664,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    }
+  },
+  "tfidf": {
+    "absent_opinions": {
+      "n_samples": 10,
+      "macro_accuracy": 0.46666666666666673,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "aspect_separation": {
+      "n_samples": 10,
+      "macro_accuracy": 0.5,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "attribution_and_scope": {
+      "n_samples": 10,
+      "macro_accuracy": 0.5333333333333333,
+      "joint_exact_match": 0.1,
+      "json_valid_rate": 1.0
+    },
+    "implicit_aspects": {
+      "n_samples": 10,
+      "macro_accuracy": 0.43333333333333335,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "instruction_like_text": {
+      "n_samples": 10,
+      "macro_accuracy": 0.43333333333333335,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "long_context": {
+      "n_samples": 10,
+      "macro_accuracy": 0.3333333333333333,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "mixed_sentiment": {
+      "n_samples": 10,
+      "macro_accuracy": 0.39999999999999997,
+      "joint_exact_match": 0.1,
+      "json_valid_rate": 1.0
+    },
+    "negation": {
+      "n_samples": 10,
+      "macro_accuracy": 0.6,
+      "joint_exact_match": 0.3,
+      "json_valid_rate": 1.0
+    }
+  },
+  "qwen_strict": {
+    "absent_opinions": {
+      "n_samples": 10,
+      "macro_accuracy": 0.0,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.0
+    },
+    "aspect_separation": {
+      "n_samples": 10,
+      "macro_accuracy": 0.0,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.0
+    },
+    "attribution_and_scope": {
+      "n_samples": 10,
+      "macro_accuracy": 0.0,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.0
+    },
+    "implicit_aspects": {
+      "n_samples": 10,
+      "macro_accuracy": 0.0,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.0
+    },
+    "instruction_like_text": {
+      "n_samples": 10,
+      "macro_accuracy": 0.0,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.0
+    },
+    "long_context": {
+      "n_samples": 10,
+      "macro_accuracy": 0.0,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.0
+    },
+    "mixed_sentiment": {
+      "n_samples": 10,
+      "macro_accuracy": 0.0,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.0
+    },
+    "negation": {
+      "n_samples": 10,
+      "macro_accuracy": 0.0,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.0
+    }
+  },
+  "qwen_single_fence": {
+    "absent_opinions": {
+      "n_samples": 10,
+      "macro_accuracy": 0.9666666666666667,
+      "joint_exact_match": 0.9,
+      "json_valid_rate": 1.0
+    },
+    "aspect_separation": {
+      "n_samples": 10,
+      "macro_accuracy": 0.39999999999999997,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 0.9
+    },
+    "attribution_and_scope": {
+      "n_samples": 10,
+      "macro_accuracy": 0.7666666666666666,
+      "joint_exact_match": 0.5,
+      "json_valid_rate": 0.9
+    },
+    "implicit_aspects": {
+      "n_samples": 10,
+      "macro_accuracy": 0.5333333333333333,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "instruction_like_text": {
+      "n_samples": 10,
+      "macro_accuracy": 0.4666666666666666,
+      "joint_exact_match": 0.1,
+      "json_valid_rate": 0.8
+    },
+    "long_context": {
+      "n_samples": 10,
+      "macro_accuracy": 0.6333333333333333,
+      "joint_exact_match": 0.1,
+      "json_valid_rate": 1.0
+    },
+    "mixed_sentiment": {
+      "n_samples": 10,
+      "macro_accuracy": 0.5,
+      "joint_exact_match": 0.0,
+      "json_valid_rate": 1.0
+    },
+    "negation": {
+      "n_samples": 10,
+      "macro_accuracy": 0.7666666666666666,
+      "joint_exact_match": 0.5,
+      "json_valid_rate": 1.0
+    }
+  }
+}

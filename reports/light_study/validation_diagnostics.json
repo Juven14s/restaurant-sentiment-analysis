@@ -1,0 +1,66 @@
+{
+  "reference_sha256": "9bae916a868f774f8b312255ea5ab957d7ed98a4a18a9ee8040ea9eac3e1808b",
+  "data_fingerprint": "14d50c46cd2b2e04ab0c8dbd9d77224cc01561af7f8885c4a12fa07a6e1613b4",
+  "n_samples": 460,
+  "error_reviews": 243,
+  "wrong_aspect_histogram": {
+    "0": 217,
+    "1": 166,
+    "2": 65,
+    "3": 12
+  },
+  "missed_reference_labels": {
+    "Prix": {
+      "Positive": 47,
+      "Négative": 36,
+      "Neutre": 19,
+      "NE": 7
+    },
+    "Cuisine": {
+      "Positive": 3,
+      "Négative": 28,
+      "Neutre": 38,
+      "NE": 32
+    },
+    "Service": {
+      "Positive": 11,
+      "Négative": 28,
+      "Neutre": 22,
+      "NE": 61
+    }
+  },
+  "surface_slices": {
+    "contrast_word": {
+      "n_samples": 161,
+      "macro_accuracy": 0.6563146997929606,
+      "macro_f1": 0.435633364831757,
+      "joint_exact_match": 0.2546583850931677
+    },
+    "long_100_words": {
+      "n_samples": 60,
+      "macro_accuracy": 0.6388888888888888,
+      "macro_f1": 0.41668380784467374,
+      "joint_exact_match": 0.23333333333333334
+    },
+    "negation_word": {
+      "n_samples": 223,
+      "macro_accuracy": 0.6905829596412557,
+      "macro_f1": 0.43772787543324304,
+      "joint_exact_match": 0.3632286995515695
+    },
+    "short_15_words": {
+      "n_samples": 8,
+      "macro_accuracy": 0.75,
+      "macro_f1": 0.37044159544159544,
+      "joint_exact_match": 0.5
+    }
+  },
+  "review_sample_size": 50,
+  "review_sample_seed": 42,
+  "sampling": "round_robin_aspect_error_patterns_then_sha256_seeded_id_rank",
+  "limitations": [
+    "Surface cues are lexical indicators, not semantic labels or causal explanations.",
+    "Error-pattern-balanced review sample is not a random prevalence estimate.",
+    "Worksheet includes private source text and must not be published."
+  ]
+}
