@@ -1,71 +1,112 @@
-# French aspect sentiment: data quality and LLM evaluation
+# Analyse de sentiments multi-aspects : CamemBERT et évaluation de LLM
 
-A reproducible **CPU-based NLP/LLM study** of French restaurant reviews:
-clean the data, compare TF-IDF with a frozen small language model, and diagnose
-prediction and structured-output failures. **No GPU is needed for this study.**
-Qwen is used for inference with unchanged pretrained weights; only the linear
-baseline is fitted on the training data.
+Projet de classification d'avis de restaurants en français selon trois aspects :
+**Prix, Cuisine et Service**. Pour chaque aspect, le modèle prédit `Positive`,
+`Négative`, `Neutre` ou `NE`. Dans ce corpus, `Neutre` désigne une opinion **mixte,
+positive et négative**, et `NE` une opinion non exprimée.
 
-Predict `Positive`, `Négative`, `Neutre` or `NE` for each of **Prix, Cuisine,
-Service**. Here `Neutre` means **mixed positive and negative opinions**, and `NE`
-means no opinion is expressed about the aspect.
+Le projet comprend un **travail académique initial avec CamemBERT**, dont le
+rapport indique environ **85 % d'exactitude moyenne en validation**, puis un
+**prolongement sur la qualité des données et l'évaluation de modèles NLP/LLM**,
+réalisé sur CPU sans nouvel entraînement neuronal.
 
-Read the [English research report](docs/light_research_report.md),
-[French reproduction guide](docs/light_study.md) and
-[experiment status](docs/experiments.md).
+Consulter le [rapport académique initial](docs/rapport-original.txt), le
+[rapport de l'étude CPU, en anglais](docs/light_research_report.md), le
+[guide de reproduction en français](docs/light_study.md) et
+[l'état des expériences](docs/experiments.md).
 
-## What was completed
+## Projet initial : classification avec CamemBERT
 
-- Validated and deduplicated 4,609 source rows into **4,598 reviews**, with frozen
-  train/validation/test splits of **3,678 / 460 / 460** and no normalized text overlap.
-- Compared majority and TF-IDF baselines with **Qwen3-0.6B inference on CPU**,
-  using a frozen 40-review validation probe and an original 80-case challenge.
-- Reviewed **50 validation errors** for mixed opinions, aspect scope, absent
-  opinions and possible annotation ambiguities.
-- Audited **12 train-only paraphrases** for semantic preservation; none were
-  used for downstream training.
-- Added strict ID-aligned scoring, provenance manifests, **44 automated tests**
-  and GitHub Actions checks.
+Le modèle initial adapte **CamemBERT** (`almanach/camembert-base`) à la
+classification multi-aspects : représentation du premier token, trois têtes
+linéaires indépendantes, dropout de 0,3 et lissage des étiquettes de 0,1.
+Le rapport décrit trois époques d'entraînement, une longueur maximale de
+256 tokens et un taux d'apprentissage de 3e-5.
 
-Qualitative reviews and challenge annotations were produced by the assistant;
-they still need independent human validation. The original coursework reviews
-and generated paraphrase pairs are not redistributed.
+**Résultats de validation indiqués dans le rapport initial :**
 
-## Measured results
+| Mesure | Exactitude approximative |
+|---|---:|
+| Prix | 85 % |
+| Cuisine | 86 % |
+| Service | 84 % |
+| **Moyenne des trois aspects** | **85 %** |
 
-On all **460 validation reviews**, TF-IDF reaches **75.94% mean per-aspect
-accuracy** and **0.4449 macro-F1**. Mixed-opinion F1 is only 0.00 for Prix, 0.05
-for Cuisine and 0.00 for Service: overall accuracy hides rare-class failures.
+Ce résultat reste celui du projet académique. Il n'a pas été remesuré lors de
+la mise au propre du dépôt. Le code et le rapport d'origine sont conservés dans
+[legacy/](legacy/) et [docs/rapport-original.txt](docs/rapport-original.txt).
 
-The matched comparisons below use the same examples for each method. Accuracy
-and macro-F1 are averaged across the three aspects.
+Les expériences suivantes utilisent un **nouveau découpage après déduplication**
+et des métriques supplémentaires. Leurs scores ne sont donc pas directement
+comparables aux 85 % initiaux. Aucun nouvel entraînement complet de CamemBERT
+n'a été effectué avec ce protocole ; les résultats TF-IDF et Qwen ci-dessous
+ne remplacent pas le résultat CamemBERT.
 
-| Evaluation set | Method | Mean accuracy | Macro-F1 | Schema validity |
+## Prolongement réalisé sur CPU
+
+Cette étude examine ce que l'on peut améliorer dans les données, les métriques
+et l'analyse des erreurs **sans disposer de GPU**. Qwen conserve ses poids
+préentraînés ; seule la référence linéaire est ajustée sur le jeu d'entraînement.
+
+- Validation et déduplication de 4 609 lignes sources pour conserver **4 598 avis**,
+  répartis en **3 678 / 460 / 460** exemples d'entraînement, de validation et de test,
+  sans texte normalisé commun entre les partitions.
+- Comparaison des références majoritaire et TF-IDF avec **Qwen3-0.6B en inférence
+  sur CPU**, sur un échantillon fixé de 40 avis de validation et un jeu diagnostic
+  original de 80 exemples.
+- Revue de **50 erreurs de validation** : opinions mixtes, portée des aspects,
+  opinions absentes et ambiguïtés possibles d'annotation.
+- Audit de **12 paraphrases issues uniquement de l'entraînement** ; aucune n'a
+  servi à entraîner un modèle.
+- Alignement strict des prédictions par identifiant, manifestes de provenance,
+  **44 tests automatisés** et intégration continue avec GitHub Actions.
+
+Les revues qualitatives et les annotations du jeu diagnostic ont été produites
+par l'assistant et nécessitent une validation humaine indépendante. Les avis
+du corpus initial et les paires de paraphrases ne sont pas redistribués.
+
+## Résultats du nouveau protocole
+
+Sur les **460 avis de validation**, TF-IDF obtient **75,94 % d'exactitude moyenne
+par aspect** et **0,4449 de macro-F1**. Pour la classe d'opinion mixte, le F1 vaut
+seulement 0,00 pour Prix, 0,05 pour Cuisine et 0,00 pour Service : l'exactitude
+moyenne masque les difficultés sur les classes rares.
+
+Chaque comparaison ci-dessous porte sur les mêmes exemples pour les différentes
+méthodes. L'exactitude et le macro-F1 sont moyennés sur les trois aspects.
+
+| Jeu d'évaluation | Méthode | Exactitude moyenne | Macro-F1 | Conformité du schéma |
 |---|---|---:|---:|---:|
-| Validation probe, 40 reviews | TF-IDF | 72.50% | 0.4032 | 100% |
-| Validation probe, 40 reviews | Qwen, strict JSON | 0.00% | 0.0000 | 0% |
-| Validation probe, 40 reviews | Qwen, single-fence analysis | 47.50% | 0.2689 | 95% |
-| Diagnostic challenge, 80 cases | TF-IDF | 46.25% | 0.2775 | 100% |
-| Diagnostic challenge, 80 cases | Qwen, strict JSON | 0.00% | 0.0000 | 0% |
-| Diagnostic challenge, 80 cases | Qwen, single-fence analysis | 62.92% | 0.4129 | 95% |
+| Échantillon de validation, 40 avis | TF-IDF | 72,50 % | 0,4032 | 100 % |
+| Échantillon de validation, 40 avis | Qwen, JSON strict | 0,00 % | 0,0000 | 0 % |
+| Échantillon de validation, 40 avis | Qwen, analyse après retrait des balises | 47,50 % | 0,2689 | 95 % |
+| Jeu diagnostic, 80 exemples | TF-IDF | 46,25 % | 0,2775 | 100 % |
+| Jeu diagnostic, 80 exemples | Qwen, JSON strict | 0,00 % | 0,0000 | 0 % |
+| Jeu diagnostic, 80 exemples | Qwen, analyse après retrait des balises | 62,92 % | 0,4129 | 95 % |
 
-Qwen wrapped every answer in Markdown fences, violating the JSON-only contract.
-A **separate format analysis** removes one complete JSON code fence from the
-same generations, without repairing labels or dropping invalid examples. This
-rule was chosen after inspecting validation outputs; the production parser
-remains strict. Even after normalization, Qwen trails TF-IDF on the real-review
-probe. Its higher challenge score does not establish a general advantage.
+Qwen a entouré toutes ses réponses de balises Markdown, ce qui enfreint le
+contrat imposant du JSON seul. Les scores stricts à zéro correspondent à cet
+échec de format, et non à une mesure isolée de compréhension des sentiments.
+Une **analyse de format séparée** retire une seule paire complète de balises
+JSON des mêmes générations, sans corriger les étiquettes ni exclure les sorties
+invalides. Cette règle a été choisie après inspection de la validation ; le
+parseur de production reste strict.
 
-The challenge covers eight difficulties, including negation, mixed sentiment,
-aspect separation and instruction-like text. It is an assistant-authored
-diagnostic set, not an independently validated external benchmark. See the
-[challenge and annotation policy](benchmarks/fr_aspect_challenge_v1/README.md),
-[public result artifacts](reports/light_study/) and
-[full report](docs/light_research_report.md) for category scores and limitations.
+Même après ce retrait, Qwen reste derrière TF-IDF sur les avis réels de
+l'échantillon de validation. Son score supérieur sur le jeu diagnostic ne
+prouve pas une supériorité générale.
 
-## Reproduce the CPU study
+Ce jeu couvre huit difficultés, dont la négation, les opinions mixtes, la
+séparation des aspects et les textes ressemblant à des instructions. Il a été
+rédigé par l'assistant et ne constitue pas un benchmark externe validé de façon
+indépendante. Les [règles d'annotation](benchmarks/fr_aspect_challenge_v1/README.md),
+les [résultats publics](reports/light_study/) et le
+[rapport complet](docs/light_research_report.md) détaillent les scores par
+catégorie et les limites de l'étude.
 
-Python 3.12 is recommended. Run these commands from the repository root:
+## Reproduire l'étude sur CPU
+
+Python 3.12 est recommandé. Depuis la racine du dépôt :
 
 ```bash
 python -m venv .venv
@@ -73,11 +114,11 @@ source .venv/bin/activate
 python -m pip install -e '.[baseline]'
 ```
 
-On Windows, activate with `.venv\Scripts\activate`.
+Sous Windows, activer l'environnement avec `.venv\Scripts\activate`.
 
-Obtain the two original coursework TSVs and place them in `data/raw/`, following
-[data/README.md](data/README.md). The private review corpus is required to refit
-the baselines and reproduce the validation analyses.
+Placer les deux fichiers TSV originaux dans `data/raw/`, en suivant
+[data/README.md](data/README.md). Le corpus privé est nécessaire pour réajuster
+les modèles de référence et reproduire les analyses de validation.
 
 ```bash
 sentiment prepare \
@@ -87,13 +128,14 @@ sentiment prepare \
 python scripts/run_light_study.py --data-dir data/processed-v1
 ```
 
-This runs the CPU baselines, freezes the 40-review probe, creates a private
-50-error review worksheet and scores the public 80-case challenge. Outputs go
-to `outputs/light-study-v1/`. Qualitative coding requires a separate review;
-the script does not reproduce the published judgments automatically.
+Le script exécute les modèles de référence sur CPU, fixe l'échantillon de
+40 avis, prépare une feuille privée de revue de 50 erreurs et évalue le jeu
+public de 80 exemples. Les sorties sont placées dans `outputs/light-study-v1/`.
+L'annotation qualitative demande une revue séparée : le script ne reproduit pas
+automatiquement les jugements publiés.
 
-To also run **frozen Qwen inference**, install the ML dependencies. On
-Linux/Windows, install the CPU-only PyTorch build first:
+Pour ajouter **l'inférence Qwen à poids inchangés**, installer les dépendances
+ML. Sous Linux/Windows, installer d'abord la version CPU de PyTorch :
 
 ```bash
 python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
@@ -101,72 +143,81 @@ python -m pip install -e '.[training]'
 python scripts/run_light_study.py --data-dir data/processed-v1 --run-llm
 ```
 
-The first run downloads the public model. The recipe pins the model revision,
-prompt and decoding settings and uses four CPU threads by default. On an Intel
-i7-11370H, measured inference took **231 seconds for the 40-review probe** and
-**417 seconds for the 80-case challenge**, excluding setup and model download.
-These are single-run timings, not a hardware guarantee. No neural training is
-called by this script. See the [French guide](docs/light_study.md) for the
-separate paraphrase audit and targeted analysis commands.
+Le modèle public est téléchargé au premier lancement. La recette fixe la
+révision du modèle, le prompt et le décodage, avec quatre threads CPU par défaut.
+Sur un Intel i7-11370H, l'inférence a pris **231 secondes pour les 40 avis** et
+**417 secondes pour les 80 exemples**, hors installation et téléchargement.
+Ces mesures proviennent d'une seule exécution et ne garantissent pas une durée
+sur une autre machine. Le script ne lance aucun entraînement neuronal.
+Le [guide en français](docs/light_study.md) décrit l'audit de paraphrases et
+les commandes d'analyse ciblée.
 
-## Data and evaluation safeguards
+## Contrôles sur les données et l'évaluation
 
-Preparation validates labels, normalizes text for duplicate detection, removes
-agreeing duplicates and excludes every copy of texts with conflicting labels.
-Frozen artifacts record source hashes, class counts and overlap checks and
-reject changes to existing splits.
+La préparation valide les étiquettes, normalise les textes pour détecter les
+doublons, retire les répétitions concordantes et exclut toutes les occurrences
+des textes portant des annotations contradictoires. Les partitions figées
+conservent les empreintes des sources, les effectifs par classe et les contrôles
+de chevauchement ; elles refusent une modification des données existantes.
 
-The text split permits restaurants in multiple partitions. Splits are not
-stratified, and semantic near-duplicates are not detected. An unseen-restaurant
-experiment is available through `--split-by restaurant` in a new output directory.
-Previously studied coursework is not a pristine external test collection.
-The CPU diagnostic study uses validation for development and does not rerun the
-coursework test to choose prompts or settings.
+Le découpage par texte autorise la présence d'un même restaurant dans plusieurs
+partitions. Il n'est pas stratifié et ne détecte pas les quasi-doublons
+sémantiques. Une expérience sur des restaurants inconnus est possible avec
+`--split-by restaurant`, dans un nouveau répertoire de sortie. Un corpus de
+cours déjà étudié ne constitue pas un test externe entièrement inédit.
+L'étude CPU utilise la validation pour le développement et ne réévalue pas le
+test du cours pour choisir ses prompts ou ses réglages.
 
-Scoring reports per-aspect accuracy, four-class macro-F1, per-class support,
-confusion matrices, joint exact match and schema validity. Missing, extra or
-duplicate prediction IDs are rejected. Invalid schema predictions count as
-errors for all three aspects and remain in the denominator. Manifests record
-data hashes, seeds, model/code revisions, settings, versions, hardware and timing.
-See the [experimental protocol](docs/protocol.md).
+L'évaluation fournit l'exactitude par aspect, le macro-F1 sur quatre classes,
+les effectifs par classe, les matrices de confusion, l'exactitude simultanée
+sur les trois aspects et la conformité du schéma. Les identifiants manquants,
+supplémentaires ou dupliqués sont refusés. Une sortie non conforme compte comme
+une erreur sur les trois aspects et reste dans le dénominateur. Les manifestes
+consignent les empreintes des données, les graines aléatoires, les révisions du
+code et du modèle, les réglages, les versions, le matériel et les durées.
+Voir le [protocole expérimental](docs/protocol.md).
 
-## Optional future training: CamemBERT and LoRA
+## Entraînements supplémentaires facultatifs
 
-The repository also includes CamemBERT training and Qwen LoRA/optional QLoRA
-backends, with best-validation checkpoints and resumable training. These are
-**available workflows, not completed full pretrained-model experiments** in
-this study. No new CamemBERT or LoRA quality score is claimed. The archived
-coursework's approximately 85% accuracy is not comparable to this protocol.
+Le dépôt contient aussi une nouvelle implémentation d'entraînement CamemBERT et
+une adaptation Qwen par LoRA, avec QLoRA facultatif, sélection du meilleur point
+de sauvegarde sur la validation et reprise d'entraînement. Ces procédures sont
+**disponibles et testées sur des modèles miniatures** ; leurs performances sur
+les modèles préentraînés complets restent à mesurer avec le nouveau protocole.
+Cela ne remet pas en cause l'expérience CamemBERT du projet initial.
 
-For a future GPU run, use the
-[Colab notebook](https://colab.research.google.com/github/Juven14s/restaurant-sentiment-analysis/blob/main/notebooks/colab_training.ipynb)
-and [French Colab guide](docs/colab.md). It starts with a 32-example smoke test,
-persists checkpoints in Drive and keeps final test evaluation disabled until
-explicitly enabled. Colab is optional; the CPU study above is independent of it.
+Pour un futur entraînement sur GPU, utiliser le
+[notebook Colab](https://colab.research.google.com/github/Juven14s/restaurant-sentiment-analysis/blob/main/notebooks/colab_training.ipynb)
+et son [guide en français](docs/colab.md). Il commence par un essai de 32 exemples,
+conserve les sauvegardes dans Drive et laisse l'évaluation finale sur test
+désactivée jusqu'à son activation explicite. Colab est facultatif et indépendant
+de l'étude CPU présentée ci-dessus.
 
-## Tests and repository layout
+## Tests et organisation du dépôt
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-The suite contains 44 tests. Core checks need no GPU or model download; optional
-ML checks are skipped when their dependencies are absent. Tiny random local
-models exercise actual CPU training, checkpoint reload and LoRA resumption.
-They verify integration, not pretrained-model quality or CUDA compatibility.
+La suite comprend 44 tests. Les contrôles de base n'ont besoin ni de GPU ni de
+téléchargement de modèle ; les tests ML facultatifs sont ignorés si leurs
+dépendances sont absentes. Des modèles locaux miniatures à poids aléatoires
+permettent de tester de vrais entraînements CPU, le rechargement des sauvegardes
+et la reprise LoRA. Ils vérifient l'intégration logicielle, pas la qualité des
+modèles préentraînés ni la compatibilité CUDA.
 
 ```text
-src/restaurant_sentiment/  Data, baselines, prompts, analysis, training and CLI
-scripts/                  CPU study and train-only paraphrase audit
-benchmarks/               Public original challenge, labels and rationales
-reports/                  Published scores and aggregate diagnostics
-tests/                    Protocol and offline integration checks
-docs/                     Research report, protocol and reproduction guides
-notebooks/                Optional Colab training workflow
-legacy/                   Archived coursework outside the supported workflow
-data/                     Local private sources and frozen splits (ignored by Git)
-outputs/                  Local predictions and checkpoints (ignored by Git)
+src/restaurant_sentiment/  Données, modèles, prompts, analyses, entraînement et CLI
+scripts/                  Étude CPU et audit de paraphrases issues de l'entraînement
+benchmarks/               Jeu diagnostic public, étiquettes et justifications
+reports/                  Scores publiés et diagnostics agrégés
+tests/                    Contrôles du protocole et intégrations hors ligne
+docs/                     Rapports, protocole et guides de reproduction
+notebooks/                Procédure facultative d'entraînement Colab
+legacy/                   Code académique initial archivé
+data/                     Sources privées et partitions locales, ignorées par Git
+outputs/                  Prédictions et sauvegardes locales, ignorées par Git
 ```
 
-Downstream augmentation gains, DPO and cluster/multi-GPU execution remain future
-work. Author: Rassem DJIMADOUM.
+Les gains d'augmentation de données, DPO et l'exécution sur cluster ou plusieurs
+GPU restent des pistes futures. Auteur : Rassem DJIMADOUM.
